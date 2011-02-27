@@ -429,7 +429,6 @@ function CheckModule($ID)
 
 function redirectTo($URL)
 {
-	@session_write_close();
 	if($_SERVER['SERVER_PROTOCOL'] == 'HTTP/1.1')
 		header('HTTP/1.1 303 See Other');
 	

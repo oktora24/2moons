@@ -36,7 +36,7 @@ ini_set('display_errors', 1);
 header('Content-Type: text/html; charset=UTF-8');
 define('TIMESTAMP',	$_SERVER['REQUEST_TIME']);
 
-require_once(ROOT_PATH . 'includes/config.php');	
+require_once(ROOT_PATH . 'includes/config.php');
 require_once(ROOT_PATH . 'includes/constants.php');
 
 ini_set('session.save_path', ROOT_PATH.'cache/sessions');
@@ -72,9 +72,13 @@ require_once(ROOT_PATH . 'includes/classes/class.Lang.php');
 require_once(ROOT_PATH . 'includes/classes/class.theme.php');
 require_once(ROOT_PATH . 'includes/classes/class.Session.php');
 	
-$db 	= new DB_MySQLi();
-$THEME	= new Theme();	
 $LANG	= new Language();	
+$THEME	= new Theme();	
+
+if($database)
+	$db = new DB_MySQLi();
+else
+	redirectTo('install.php');
 	
 unset($database);
 
